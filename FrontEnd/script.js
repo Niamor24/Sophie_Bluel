@@ -1,10 +1,13 @@
 const galerie = document.querySelector(".gallery");
 const categoryDiv = document.querySelector(".categorie");
 
+let works = [];
+let activeButton = null; // Variable pour suivre le bouton actif
+
 async function ajouterGallerie(works) {
     // Vider la galerie avant d'ajouter de nouveaux éléments
     galerie.innerHTML = "";
-    
+
     // Ajouter les éléments à la galerie
     works.forEach(function(article) {
         // Créer la balise principale "figure"
@@ -27,7 +30,7 @@ async function ajouterGallerie(works) {
     });
 }
 
-async function displayBouton(works) {
+async function displayBouton() {
     // Appel fetch pour récupérer les données du tableau "categories"
     const reponseCategories = await fetch("http://localhost:5678/api/categories");
     const categories = await reponseCategories.json();
@@ -41,6 +44,17 @@ async function displayBouton(works) {
 
         btn.addEventListener("click", function(event) {
             event.preventDefault(); // Prévenir le comportement par défaut du bouton
+
+            // Gérer la classe active du bouton
+            if (activeButton) {
+                activeButton.classList.remove('green-btn');
+                activeButton.classList.add('btn-filter');
+            }
+
+            // Mettre à jour le bouton actif
+            btn.classList.remove('btn-filter');
+            btn.classList.add('green-btn');
+            activeButton = btn;
 
             // Filtrer les projets selon la catégorie sélectionnée
             const filterProjet = works.filter(function(p) {
@@ -56,17 +70,35 @@ async function displayBouton(works) {
     });
 }
 
+// Bouton "Tous"
+const allBtn = document.createElement("button");
+allBtn.textContent = "Tous";
+allBtn.classList.add('btn-filter');
+categoryDiv.appendChild(allBtn);
+
+allBtn.addEventListener("click", function(event) {
+    event.preventDefault(); // Prévenir le comportement par défaut du bouton
+    ajouterGallerie(works); // Afficher tous les projets
+
+    // Réinitialiser le bouton actif
+    if (activeButton) {
+        activeButton.classList.remove('green-btn');
+        activeButton.classList.add('btn-filter');
+        activeButton = null;
+    }
+});
+
 // Fonction principale pour charger les données initiales
 async function init() {
     // Récupérer toutes les œuvres
     const reponseWorks = await fetch("http://localhost:5678/api/works");
-    const works = await reponseWorks.json();
+    works = await reponseWorks.json();
 
     // Afficher toutes les œuvres initialement
     ajouterGallerie(works);
 
     // Créer les boutons de filtre
-    displayBouton(works);
+    displayBouton();
 }
 
 // Appel de la fonction principale
