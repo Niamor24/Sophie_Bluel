@@ -73,7 +73,7 @@ async function displayBouton() {
 // Bouton "Tous"
 const allBtn = document.createElement("button");
 allBtn.textContent = "Tous";
-allBtn.classList.add('btn-filter');
+allBtn.classList.add('green-btn');
 categoryDiv.appendChild(allBtn);
 
 allBtn.addEventListener("click", function(event) {
@@ -82,9 +82,11 @@ allBtn.addEventListener("click", function(event) {
 
     // Réinitialiser le bouton actif
     if (activeButton) {
+        activeButton.classList.add('green-btn');
+        activeButton.classList.remove('btn-filter');
+    } else {
         activeButton.classList.remove('green-btn');
         activeButton.classList.add('btn-filter');
-        activeButton = null;
     }
 });
 
