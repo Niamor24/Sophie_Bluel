@@ -1,5 +1,4 @@
 body {
-	/*max-width: 1140px;*/
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
@@ -53,6 +52,10 @@ nav {
     justify-content: space-between;
 }
 
+li:hover {
+	color: #B1663C;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -61,10 +64,6 @@ a {
 .insta {
     height: 20px;
     width: 20px;
-}
-
-.login-bold {
-    
 }
 
 /*MAIN*/
@@ -116,7 +115,7 @@ label {
 }
 
 .button-forgot {
-    margin: 40px 0;
+    margin: 30px 0;
     gap: 20px;
     display: flex;
     align-items: center;
@@ -161,4 +160,10 @@ footer > div {
     justify-content: end;
     color: black;
     font-weight: 300;
+}
+
+.formulaire p {
+    text-align: center;
+    color: red;
+    font-size: 16px;
 }

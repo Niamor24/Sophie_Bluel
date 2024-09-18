@@ -7,14 +7,19 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/login.css">
+    <script src="log-in.js" defer></script>
     <title>Log-in page</title>
 </head>
 <body>
     <header class="container">
         <nav>
             <div class="logo-titre">
-                <h1 class="logo">Sophie Bluel</h1>
-                <p class="titre">ARCHITECTE D'INTERIEUR</p>
+                <div>
+                    <a href="index.html">
+                        <h1 class="logo">Sophie Bluel</h1>
+                        <p class="titre">ARCHITECTE D'INTERIEUR</p>
+                    </a>
+                </div>
             </div>
             <div class="liste-principal">
                 <ul class="liste-nav">
@@ -29,15 +34,16 @@
     <main>
         <section class="formulaire">
             <h2>Log In</h2>
-            <form action="POST">
+            <form action="#">
                 <div>
                     <label for="mail">E-mail</label>
-                    <input type="mail">
+                    <input type="email" name="email" id="email">
                 </div>
                 <div>
                     <label for="password">Mot de passe</label>
-                    <input type="password">
+                    <input type="password" name="password" id="password">
                 </div>
+                <p></p>
                 <div class="button-forgot">
                     <button class="seco">Se connecter</button>
                     <a class="forget" href="#">Mot de passe oublié</a>
