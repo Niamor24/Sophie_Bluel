@@ -1,19 +1,19 @@
+// Sélection des éléments de la galerie et des catégories
 const galerie = document.querySelector(".gallery");
 const categoryDiv = document.querySelector(".categorie");
 
 let works = [];
 let activeButton = null; // Variable pour suivre le bouton actif
 
+// Fonction pour ajouter les œuvres dans la galerie
 async function ajouterGallerie(works) {
     // Vider la galerie avant d'ajouter de nouveaux éléments
     galerie.innerHTML = "";
 
-    // Ajouter les éléments à la galerie
+    // Parcourir les œuvres et les ajouter à la galerie
     works.forEach(function(article) {
-        // Créer la balise principale "figure"
         const figure = document.createElement("figure");
 
-        // Créer les balises enfants "img" et "figcaption"
         const image = document.createElement("img");
         image.src = article.imageUrl;
         image.alt = article.title;
@@ -21,21 +21,19 @@ async function ajouterGallerie(works) {
         const figCaption = document.createElement("figcaption");
         figCaption.innerText = article.title;
 
-        // Attacher les balises
         figure.appendChild(image);
         figure.appendChild(figCaption);
 
-        // Ajouter la "figure" dans la galerie
         galerie.appendChild(figure);
     });
 }
 
+// Fonction pour afficher les boutons de catégorie
 async function displayBouton() {
-    // Appel fetch pour récupérer les données du tableau "categories"
     const reponseCategories = await fetch("http://localhost:5678/api/categories");
     const categories = await reponseCategories.json();
 
-    // Création des boutons pour chaque catégorie
+    // Création des boutons de catégorie
     categories.forEach(function(categorie) {
         const btn = document.createElement("button");
         btn.textContent = categorie.name;
@@ -43,25 +41,29 @@ async function displayBouton() {
         btn.classList.add('btn-filter');
 
         btn.addEventListener("click", function(event) {
-            event.preventDefault(); // Prévenir le comportement par défaut du bouton
+            event.preventDefault(); // Empêche le comportement par défaut
 
-            // Gérer la classe active du bouton
+            // Gestion des classes : désactiver le bouton actif précédent
             if (activeButton) {
                 activeButton.classList.remove('green-btn');
                 activeButton.classList.add('btn-filter');
             }
 
-            // Mettre à jour le bouton actif
+            // Activer le bouton actuel
             btn.classList.remove('btn-filter');
             btn.classList.add('green-btn');
-            activeButton = btn;
+            activeButton = btn; // Mettre à jour le bouton actif
 
-            // Filtrer les projets selon la catégorie sélectionnée
+            // Faire en sorte que le bouton "Tous" devienne inactif
+            allBtn.classList.remove('green-btn');
+            allBtn.classList.add('btn-filter');
+
+            // Filtrer les œuvres en fonction de la catégorie sélectionnée
             const filterProjet = works.filter(function(p) {
                 return p.categoryId === categorie.id;
             });
 
-            // Afficher les projets filtrés
+            // Ajouter les œuvres filtrées dans la galerie
             ajouterGallerie(filterProjet);
         });
 
@@ -73,30 +75,31 @@ async function displayBouton() {
 // Bouton "Tous"
 const allBtn = document.createElement("button");
 allBtn.textContent = "Tous";
-allBtn.classList.add('green-btn');
+allBtn.classList.add('green-btn'); // Par défaut, le bouton "Tous" est actif au chargement
 categoryDiv.appendChild(allBtn);
 
 allBtn.addEventListener("click", function(event) {
-    event.preventDefault(); // Prévenir le comportement par défaut du bouton
-    ajouterGallerie(works); // Afficher tous les projets
+    event.preventDefault(); // Empêcher le comportement par défaut
+    ajouterGallerie(works); // Afficher toutes les œuvres
 
-    // Réinitialiser le bouton actif
+    // Gestion des classes : désactiver le bouton actif précédent
     if (activeButton) {
-        activeButton.classList.add('green-btn');
-        activeButton.classList.remove('btn-filter');
-    } else {
         activeButton.classList.remove('green-btn');
         activeButton.classList.add('btn-filter');
     }
+
+    // Activer le bouton "Tous"
+    allBtn.classList.remove('btn-filter');
+    allBtn.classList.add('green-btn');
+    activeButton = allBtn; // Mettre à jour le bouton actif
 });
 
-// Fonction principale pour charger les données initiales
+// Fonction principale pour charger les données
 async function init() {
-    // Récupérer toutes les œuvres
     const reponseWorks = await fetch("http://localhost:5678/api/works");
     works = await reponseWorks.json();
 
-    // Afficher toutes les œuvres initialement
+    // Afficher toutes les œuvres au départ
     ajouterGallerie(works);
 
     // Créer les boutons de filtre
@@ -105,3 +108,38 @@ async function init() {
 
 // Appel de la fonction principale
 init();
+
+
+// Affichage des éléments non visible quand l'utilisateur est connecté
+const logout = document.querySelector('.logout')
+const login = document.querySelector('.login')
+const editionMode = document.querySelector('.edition-mode')
+const edit = document.querySelector('.edit')
+const displayEdit = document.querySelector('.modifier-et-projet p')
+
+function isUserConnected () {
+    const token = localStorage.getItem("token")
+    return !!token
+}
+
+function toggleFilters () {
+    if (isUserConnected()) {
+        categoryDiv.style.display = "none"; // Enlève les filtres
+        logout.style.display = "block" // Apparition du texte "logout"
+        login.style.display = "none" // Disparition du texte "login"
+    } else {
+        logout.style.display = "none" // Disparition du texte "logout"
+        login.style.display = "block" // Apparition du texte "login"
+        editionMode.style.display = "none" // Disparition du bandeau édition
+        edit.style.display = "none" // Disparition du texte et icone modifier
+        displayEdit.style.display = "none"
+    }
+}
+
+logout.addEventListener("click", function(event) {
+    window.localStorage.removeItem("token")
+    window.location.reload()
+    console.log("cliquez !")
+})
+
+toggleFilters()
