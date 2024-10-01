@@ -264,3 +264,71 @@ footer nav ul {
 .bandeau {
 	background-color: white;
 }
+
+/* Code pour la modale */
+
+.modale-container {
+	display: none;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+}
+
+.overlay {
+    position: fixed; /* L'overlay sera fixé à la fenêtre, donc il couvrira toute la page */
+    top: 0; 
+    left: 0; 
+    width: 100vw; /* 100% de la largeur de la fenêtre (viewport width) */
+    height: 100vh; /* 100% de la hauteur de la fenêtre (viewport height) */
+    background-color: rgba(0, 0, 0, 0.7); /* Couleur de fond semi-transparente */
+    z-index: 1000; /* Pour être sûr que l'overlay soit au-dessus de tout le reste */
+}
+
+.modal {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	position: fixed;
+	background-color: #fff;
+	height: auto;
+	width: 45%;
+	z-index: 1000;
+	top: 25%;
+	left: 28%;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+.cross {
+	display: flex;
+	justify-content: end;
+	width: 100%;
+	display: flex;
+	font-size: 30px;
+	right: 15px;
+	top: 15px;
+}
+
+.title-modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title-modal > h3 {
+	font-size: 30px;
+	margin-top: 25px;
+}
+
+.title-modal button {
+	height: 37px;
+	padding: 0 20px;
+	border-radius: 60px;
+	border: 2px solid #1D6154;
+	background-color: #1D6154;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
