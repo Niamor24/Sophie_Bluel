@@ -59,8 +59,8 @@ async function displayBouton() {
             allBtn.classList.add('btn-filter');
 
             // Filtrer les œuvres en fonction de la catégorie sélectionnée
-            const filterProjet = works.filter(function(p) {
-                return p.categoryId === categorie.id;
+            const filterProjet = works.filter((work) => {
+                return work.categoryId === categorie.id;
             });
 
             // Ajouter les œuvres filtrées dans la galerie

@@ -6,6 +6,7 @@ const cross = document.querySelector('.cross > i');
 
 // Initialiser l'état du style (ne pas réaffecter modaleOverlay)
 modaleOverlay.style.display = "none";
+cross.style.cursor = "pointer"
 
 // Faire apparaitre la modale
 const editModal = document.querySelector(".edit-modale");
@@ -28,3 +29,10 @@ cross.addEventListener('click', function(event) {
     modaleOverlay.style.display = "none"; // Cache la modale
     console.log("clic");
 });
+
+const contenuModal = document.querySelector(".contenu")
+const gallerie = ajouterGallerie(works);
+
+function modale () {
+    contenuModal.appendChild(gallerie)
+}
