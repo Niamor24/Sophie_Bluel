@@ -293,7 +293,7 @@ footer nav ul {
 	height: auto;
 	width: 45%;
 	z-index: 1000;
-	top: 25%;
+	top: 20%;
 	left: 28%;
 	padding: 20px;
 	border-radius: 20px;
@@ -301,7 +301,7 @@ footer nav ul {
 
 .cross {
 	display: flex;
-	justify-content: end;
+	justify-content: space-between;
 	width: 100%;
 	display: flex;
 	font-size: 30px;
@@ -309,8 +309,13 @@ footer nav ul {
 	top: 15px;
 }
 
+.visibilite {
+	visibility: hidden;
+}
+
 .title-modal {
 	display: flex;
+	width: 100%;
 	flex-direction: column;
 	align-items: center;
 }
@@ -331,4 +336,105 @@ footer nav ul {
 	color: #fff;
 	cursor: pointer;
 	margin-bottom: 20px;
+	margin-top: 20px;
 }
+
+.contenu {
+	display: grid;
+	justify-content: center;
+	gap: 15px;
+	width: 80%;
+	height: 100%;
+	grid-template-columns: 75px 75px 75px 75px 75px;
+	grid-template-rows: auto;
+}
+
+.contenu-deux {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+	height: 100%;
+}
+.contenu img {
+	width: 75px;
+}
+
+.contenu .suppr {
+	width: 75px;
+	position: relative;
+	/* margin: 2.5px 0 2.5px 0; */
+	color: #fff;
+}
+
+.trash  {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: black;
+	border-radius: 3px;
+	width: 20px;
+	height: 20px;
+}
+
+hr {
+	width: 80%;
+	border: 1px solid lightgray;
+	margin-top: -20px;
+}
+
+/* Code pour la modale 'ajout photo' */
+.add-picture {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: #E8F1F6;
+	border-radius: 6px;
+}
+.bx-photo-album {
+	font-size: 100px;
+	color: #B9C5CC;
+}
+
+.add-picture-button {
+	background-color: #B9C5CC !important;
+	border-color: #B9C5CC !important;
+	color: #1D6154 !important;
+	margin-bottom: 5px !important;
+	margin-top: 5px !important;
+	font-weight: 500 !important;
+}
+
+.add-picture p {
+	margin-bottom: 10px;
+}
+
+form label {
+	margin-top: 35px;
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.title-upload, .category-upload {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.title-upload > input {
+	border: none;
+	height: 40px !important;
+	box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+.category-upload > select {
+	border: none;
+	height: 40px !important;
+	box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+/*MINESR-GAFRA5-KLEFJV*/

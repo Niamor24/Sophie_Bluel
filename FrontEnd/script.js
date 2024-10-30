@@ -107,7 +107,7 @@ async function init() {
 }
 
 // Appel de la fonction principale
-init();
+// init();
 
 
 // Affichage des éléments non visible quand l'utilisateur est connecté

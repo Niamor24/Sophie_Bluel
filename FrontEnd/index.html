@@ -12,18 +12,110 @@
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<script src="script.js" defer></script>
 	<script src="modale.js" defer></script>
+	<script src="test.js" defer></script>
 </head>
 <body>
 	<div class="modal-container">
 		<div class="overlay"></div>
 		<div class="modal">
 			<div class="cross">
+				<i class='bx bx-left-arrow-alt visibilite'></i>
 				<i class='bx bx-x'></i>
 			</div>
 			<div class="title-modal">
 				<h3>Galerie photo</h3>
-				<section class="contenu"></section>
-				<button>Ajouter une photo</button>
+				<section class="contenu">
+					<!-- <div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/abajour-tahina.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/appartement-paris-v.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/appartement-paris-x.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/appartement-paris-xviii.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/bar-lullaby-paris.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/hotel-first-arte-new-delhi.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/la-balisiere.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/le-coteau-cassis.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/restaurant-sushisen-londres.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/structures-thermopolis.png" alt="test">
+					</div>
+					<div class="suppr">
+						<div class="trash">
+							<i class='bx bx-trash'></i>
+						</div>
+						<img src="assets/images/villa-ferneze.png" alt="test">
+					</div> -->
+				</section>
+				<section class="contenu-deux">
+					<div class="add-picture">
+						<i class='bx bx-photo-album'></i>
+						<button class="add-picture-button">+ Ajouter Photo</button>
+						<p>jpg, png : 4mo max</p>
+					</div>
+					<form action="" method="POST" enctype="multipart/form-data">
+						<div class="title-upload">
+							<label for="">Titre</label>
+							<input type="text">
+						</div>
+						<div class="category-upload">
+							<label for="">Categorie</label>
+							<select name="categorie">
+								<option value="">--</option>
+								<option value="Objets">Objets</option>
+								<option value="Appartements">Appartements</option>
+								<option value="Hotels & Restaurants">Hotels & Restaurants</option>
+							</select>
+						</div>
+					</form>
+				</section>
+				<hr>
+				<button class="modale-button">Ajouter une photo</button>
 			</div>
 		</div>
 	</div>
